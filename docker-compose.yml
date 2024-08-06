@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+    netcup-dyndns:
+        image: kinglouie/netcup-dyndns:latest
+        build: ./
+        restart: unless-stopped
+        container_name: netcup-dyndns
+        network_mode: host # necessary for ipv6!
+        environment:
+            SCHEDULE: "*/10 * * * *" # https://crontab.guru/
+            DOMAINLIST: ""
+            CUSTOMER_ID: ""
+            API_KEY: ""
+            API_PASSWORD: ""
